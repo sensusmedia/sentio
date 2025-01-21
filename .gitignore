@@ -1,7 +1,31 @@
-/*
-!/app/
-!/app/public/
-!/app/public/wp-content/
-!/app/public/wp-content/plugins/
-!/app/public/wp-content/plugins/Sentio Addons/
-!/app/public/wp-content/plugins/Sentio Addons/**/*
+# Ignore everything except the plugin and critical files
+*
+
+# Allow the .gitignore file
+!.gitignore
+
+# Allow the plugin directory
+!/wp-content/plugins/sentio/
+
+# Allow wp-config.php for database credentials (optional)
+!wp-config.php
+
+# Ignore the rest of wp-content (except specific plugin)
+wp-content/*
+!wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/sentio/
+
+# Ignore logs and backups
+debug.log
+*.log
+*.bak
+*.sql
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
