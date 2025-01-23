@@ -1,31 +1,29 @@
-# Ignore everything except the plugin and critical files
+
+# Ignore everything by default
 *
 
-# Allow the .gitignore file
+# Allow the .gitignore file itself
 !.gitignore
 
-# Allow the plugin directory
-!/wp-content/plugins/sentio/
+# Allow wp-content plugins folder
+!/app/
+!/app/public/
+!/app/public/wp-content/
+!/app/public/wp-content/plugins/
+!/app/public/wp-content/plugins/Sentio Addons/
 
-# Allow wp-config.php for database credentials (optional)
-!wp-config.php
+# Allow all files within the Sentio Addons directory
+!/app/public/wp-content/plugins/Sentio Addons/**
 
-# Ignore the rest of wp-content (except specific plugin)
-wp-content/*
-!wp-content/plugins/
-wp-content/plugins/*
-!wp-content/plugins/sentio/
+# Ignore specific unwanted files or directories
+app/public/wp-content/plugins/*
 
-# Ignore logs and backups
-debug.log
+# Ignore logs, temporary files, and sensitive files
 *.log
 *.bak
 *.sql
-
-# Ignore IDE-specific files
+node_modules/
 .idea/
 .vscode/
-
-# Ignore system files
 .DS_Store
 Thumbs.db
