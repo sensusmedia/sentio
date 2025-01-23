@@ -1,101 +1,90 @@
 
-# Sentio Addons Plugin Workflow
+# Sentio Addons Setup Guide
 
-This guide explains how to set up the development environment and work specifically on the **Sentio Addons** plugin, which is located within the larger Sentio repository. Developers are restricted to working only on this plugin directory.
-
----
-
-## **Step 1: Setting Up the Local Environment**
-
-### Prerequisites
-Before you begin, ensure the following tools are installed and configured:
-
-1. **WP Engine Local App**: [Download here](https://wpengine.com/local/).
-2. **Git**: [Install Git](https://git-scm.com/downloads) for version control.
-3. **GitHub Account**: Ensure you have access to the [Sentio repository](https://github.com/sensusmedia/sentio/tree/develop).
-4. **Code Editor**: (Optional) Use a tool like [Visual Studio Code](https://code.visualstudio.com/).
+This guide provides step-by-step instructions to set up a WordPress development environment using WPE Local, clone the [Sentio repository](https://github.com/sensusmedia/sentio), and configure it to work specifically on the Sentio Addons plugin.
 
 ---
 
-### **1. Clone the Sentio Repository**
-The **Sentio Addons** plugin is located in the `app/public/wp-content/plugins/Sentio Addons` directory of the Sentio repository. Follow these steps:
+## Prerequisites
 
-1. Clone the entire repository:
+Before you begin, ensure you have the following installed on your system:
+
+1. **Node.js** (for certain development tools)
+2. **Git** (for version control)
+3. **WPE Local** ([Download LocalWP here](https://localwp.com/))
+4. A **GitHub account** with access to the [Sentio repository](https://github.com/sensusmedia/sentio)
+
+---
+
+## Step 1: Clone the Repository
+
+The **Sentio Addons** plugin is located in the `app/public/wp-content/plugins/Sentio Addons` directory of the Sentio repository. To set up your local development environment, follow these steps:
+
+1. Open a terminal and navigate to your project workspace:
+   ```bash
+   cd ~/projects/
+   ```
+2. Clone the Sentio repository:
    ```bash
    git clone https://github.com/sensusmedia/sentio.git
    cd sentio
    ```
 
-2. Navigate to the Sentio Addons plugin directory:
-   ```bash
-   cd app/public/wp-content/plugins/Sentio\ Addons
-   ```
+---
 
-3. Ensure you only work within this directory. Any changes made outside this directory will not be tracked or committed due to the `.gitignore` configuration.
+## Step 2: Set Up a New Site in WPE Local
+
+1. Open WPE Local and click **"Create a New Site"**.
+2. **Select the Cloned Repository Path**:
+   - Use the path to the `sentio` folder (e.g., `~/projects/sentio`).
+3. Configure settings:
+   - Ensure the `app/public` directory contains WordPress core files.
+   - Select the **Preferred Configuration** or customize PHP, MySQL, and web server settings as needed.
+4. Complete the setup by creating admin credentials for the WordPress site.
 
 ---
 
-## **Step 2: Working on the Sentio Addons Plugin**
+## Step 3: Verify the Installation
 
-### 1. Create a Feature Branch
-To begin working on a new feature or bug fix, create a new branch:
-```bash
-git checkout -b feature/<feature-name>
-```
+1. Open the local WordPress directory (`~/projects/sentio/app/public/`) to ensure it contains:
+   - `wp-admin/`, `wp-includes/`, `wp-content/`.
+   - The custom plugin `Sentio Addons` under `wp-content/plugins/`.
+2. Open the WordPress Admin Dashboard (`WP Admin`) to confirm the theme and plugin are active.
 
-### 2. Make Changes
-- Edit the plugin files only within the `Sentio Addons` directory.
-- Test your changes locally in your WordPress environment.
+---
 
-### 3. Stage and Commit Changes
-- Stage only changes made to the `Sentio Addons` plugin directory:
-  ```bash
-  git add app/public/wp-content/plugins/Sentio\ Addons/
-  git commit -m "Describe your changes"
+## Step 4: Develop Locally
+
+1. **Work in the `Sentio Addons` Directory**:
+   - Navigate to the plugin directory:
+     ```bash
+     cd app/public/wp-content/plugins/Sentio\ Addons
+     ```
+   - Make all changes within this directory. Files outside this directory are ignored by Git.
+
+2. **Push Changes**:
+   - Stage changes in the `Sentio Addons` directory:
+     ```bash
+     git add app/public/wp-content/plugins/Sentio\ Addons/
+     ```
+   - Commit your changes:
+     ```bash
+     git commit -m "Describe your changes"
+     ```
+   - Push your changes to the remote repository:
+     ```bash
+     git push
+     ```
+
+---
+
+## Additional Notes
+
+- **Local Site Path**: The local WordPress site path will typically be:
+  ```
+  ~/projects/sentio/app/public
   ```
 
-### 4. Push the Branch
-Push your branch to the remote repository:
-```bash
-git push origin feature/<feature-name>
-```
-
 ---
 
-## **Step 3: Deployment Workflow**
-
-- Once your changes are reviewed and approved, merge your feature branch into the `develop` branch.
-- The deployment pipeline (e.g., DeployHQ) will automatically deploy changes from the `develop` branch to the staging environment.
-- Only files in the `Sentio Addons` directory will be deployed due to the `.gitignore` configuration.
-
----
-
-## **.gitignore Configuration**
-
-The repository uses the following `.gitignore` to ensure only the `Sentio Addons` directory is tracked:
-
-```gitignore
-/*
-!/app/
-!/app/public/
-!/app/public/wp-content/
-!/app/public/wp-content/plugins/
-!/app/public/wp-content/plugins/Sentio Addons/
-!/app/public/wp-content/plugins/Sentio Addons/**/*
-```
-
----
-
-## **Best Practices**
-
-1. Always create feature branches for new work.
-2. Commit meaningful and specific changes.
-3. Test thoroughly before creating a pull request.
-4. Keep your `develop` branch up-to-date:
-   ```bash
-   git pull origin develop
-   ```
-
----
-
-This workflow ensures you are working exclusively on the **Sentio Addons** plugin and simplifies the development and deployment process. Let me know if you need further adjustments or clarifications!
+Thank you for using this guide to set up your development environment for the Sentio Addons plugin! If you encounter any issues, submit an issue on the [repository's GitHub page](https://github.com/sensusmedia/sentio).
