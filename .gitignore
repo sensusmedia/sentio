@@ -2,10 +2,7 @@
 # Ignore everything by default
 *
 
-# Allow the .gitignore file itself
-!.gitignore
-
-# Allow wp-content plugins folder
+# Allow essential directories for WordPress
 !/app/
 !/app/public/
 !/app/public/wp-content/
@@ -15,10 +12,13 @@
 # Allow all files within the Sentio Addons directory
 !/app/public/wp-content/plugins/Sentio Addons/**
 
-# Ignore specific unwanted files or directories
-app/public/wp-content/plugins/*
+# Ignore unnecessary folders and logs
+app/conf/*
+app/public/conf/*
+app/public/logs/*
+logs/
 
-# Ignore logs, temporary files, and sensitive files
+# Ignore system files and backups
 *.log
 *.bak
 *.sql
